@@ -33,7 +33,6 @@ export const SignupScreen = ({ navigation }) => {
             label="Name"
             value={name}
             textContentType="name"
-            keyboardType="name"
             autoCapitalize="none"
             onChangeText={(u) => setName(u)}
           />
@@ -43,7 +42,6 @@ export const SignupScreen = ({ navigation }) => {
             label="Uniben Email Address"
             value={email}
             textContentType="emailAddress"
-            keyboardType="email-address"
             autoCapitalize="none"
             onChangeText={(u) => setEmail(u)}
           />
@@ -52,8 +50,6 @@ export const SignupScreen = ({ navigation }) => {
           <AuthTextInput
             label="Matriculation Number"
             value={matno}
-            textContentType="Matriculation Number"
-            keyboardType="Matriculation Number"
             autoCapitalize="none"
             onChangeText={(u) => setMatNo(u)}
           />
@@ -62,8 +58,6 @@ export const SignupScreen = ({ navigation }) => {
           <AuthTextInput
             label="Department"
             value={department}
-            textContentType="department"
-            keyboardType="department"
             autoCapitalize="none"
             onChangeText={(u) => setDepartment(u)}
           />

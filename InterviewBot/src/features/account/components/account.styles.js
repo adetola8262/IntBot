@@ -64,7 +64,7 @@ export const AuthButton = styled(Button).attrs({
 export const AuthTextInput = styled(TextInput).attrs({})``;
 
 export const Title = styled(Text)`
-  color: var(--Black, #333);
+  color: #333;
   font-size: 32px;
   font-style: normal;
   font-weight: 500;

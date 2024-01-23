@@ -1,32 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Audio } from "expo-av";
 import * as Speech from "expo-speech";
-import * as FileSystem from "expo-file-system";
 import { getToken } from "../../../services/authentication/token.service";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import {
   InterviewChatContainer,
-  ChatNavigationContainer,
+  CenterImage,
   ChatArea,
   ReplyMessage,
   MessageInput,
   SendButton,
-  CenterImage,
 } from "../components/Interview.styles";
-import { IconButton, MD3Colors } from "react-native-paper";
+import Image from "../components/Image.component";
 
 export const InterviewChatScreen = ({ navigation }) => {
   const [messageText, setMessageText] = useState("");
   const [replyText, setReplyText] = useState("");
   const [numberOfMessages, setNumberOfMessages] = useState(0);
+  const [resetAnimation, setResetAnimation] = useState(false);
 
   useEffect(() => {
     speak(replyText);
+  
+    // Cleanup function
+    return () => {
+      // Stop the animation when the component unmounts or when replyText changes
+      setResetAnimation(false);
+    };
   }, [replyText]);
+  
 
   useEffect(() => {
-    if (numberOfMessages === 10) {
+    if (numberOfMessages === 5) {
       getScore().then(() => {
         setTimeout(() => {
           navigation.goBack();
@@ -36,8 +41,22 @@ export const InterviewChatScreen = ({ navigation }) => {
   }, [numberOfMessages]);
 
   const speak = (text) => {
-    Speech.speak(text);
+    // Start speaking
+    Speech.speak(text, {
+      onDone: () => {
+        // Animation should stop when speech is done
+        setResetAnimation(false);
+      },
+      onStopped: () => {
+        // Animation should stop when speech is stopped
+        setResetAnimation(false);
+      },
+    });
+  
+    // Animation should start when speech begins
+    setResetAnimation(true);
   };
+  
 
   const sendTextMessage = async () => {
     try {
@@ -104,22 +123,9 @@ export const InterviewChatScreen = ({ navigation }) => {
 
   return (
     <InterviewChatContainer>
-      <ChatNavigationContainer>
-        <IconButton
-          icon="arrow-left"
-          iconColor={MD3Colors.white}
-          size={20}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-      </ChatNavigationContainer>
 
       <ChatArea>
-        <CenterImage
-          source={require("../../../assets/man.png")}
-          style={{ width: 200, height: 200 }}
-        />
+        <Image resetAnimation={resetAnimation} />
 
         <ReplyMessage>{replyText}</ReplyMessage>
 

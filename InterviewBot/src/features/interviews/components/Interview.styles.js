@@ -22,7 +22,7 @@ export const InterviewScheduleContainer = styled.View`
 
 export const ViewContainer = styled.View`
   flex: 1;
-  align-items: left;
+  align-items: flex-start;
   justify-content: flex-start;
   width: 23.375rem;
   height: 13.1875rem;
@@ -31,7 +31,7 @@ export const ViewContainer = styled.View`
 `;
 
 export const Title = styled(Text)`
-  color: var(--Black, #333);
+  color: #333;
   font-size: 32px;
   font-style: normal;
   font-weight: 500;
@@ -45,7 +45,7 @@ export const InterviewText = styled(Text)`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: left;
+  align-items: flex-start;
 `;
 
 export const InterviewButton = styled(Button).attrs({
@@ -72,46 +72,35 @@ export const InterviewChatContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-export const ChatNavigationContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: left;
-  width: 100%;
-  height: 3.125rem;
-  padding: 0rem 1rem;
-  flex-shrink: 0;
-`;
-
 export const ChatArea = styled(ScrollView)`
-  width: 100%;
   flex: 1;
-  padding: 0rem 1rem;
-  flex-shrink: 0;
   margin-top: 1rem;
+  width: 100%;
+  padding: 1rem;
 `;
 
 export const CenterImage = styled.Image`
-  width: 25.875rem;
-  height: 56rem;
+  width: 100%;
+  height: auto; /* Adjust height to maintain aspect ratio */
+  margin-bottom: 1rem; /* Add space below CenterImage */
 `;
 
 export const ReplyMessage = styled(Text)`
-  width: 80%;
-  height: 70px;
+  width: 100%; /* Use full width */
+  height: auto; /* Allow dynamic height */
   color: #333;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
+  margin-bottom: 0.5rem; /* Add space between ReplyMessage and other components */
 `;
 
 export const MessageInput = styled.TextInput`
-  width: 80%;
+  width: 100%; /* Use full width */
   height: 40px;
   border: 1px solid #ccc;
   padding: 10px;
-  border: none;
-  margin-top: 20px;
+  margin-top: 1rem; /* Add space above MessageInput */
   color: #333;
 `;
 
@@ -123,6 +112,6 @@ export const SendButton = styled.TouchableOpacity`
   text-align: center;
   text-decoration: none;
   font-size: 16px;
-  margin: 4px 2px;
+  margin-top: 1rem; /* Add space above SendButton */
   border-radius: 5px;
 `;

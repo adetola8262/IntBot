@@ -23,8 +23,6 @@ export const LoginScreen = ({ navigation }) => {
         <AuthTextInput
           label="Matriculation Number"
           value={matno}
-          textContentType="matno"
-          keyboardType="mat-number"
           autoCapitalize="none"
           onChangeText={(u) => setMatNo(u)}
         />

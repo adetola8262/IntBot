@@ -11,7 +11,7 @@ const InterviewStack = createStackNavigator();
 export const InterviesNavigator = () => {
   return (
     <InterviewStack.Navigator
-      headerMode="none"
+      headerShown="false"
       screenOptions={{ ...TransitionPresets.ModalPresentationIOS }}
     >
       <InterviewStack.Screen
