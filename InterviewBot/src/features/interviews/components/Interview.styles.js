@@ -96,15 +96,17 @@ export const ReplyMessage = styled(Text)`
 `;
 
 export const MessageInput = styled.TextInput`
-  width: 100%; /* Use full width */
+  width: 100%;
   height: 40px;
   border: 1px solid #ccc;
   padding: 10px;
-  margin-top: 1rem; /* Add space above MessageInput */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   color: #333;
 `;
 
 export const SendButton = styled.TouchableOpacity`
+  width: auto;
   background: #3083dc;
   border: none;
   color: white;

@@ -26,12 +26,18 @@ const SpacerView = styled.View`
   ${({ variant }) => variant}
 `;
 
-export const Spacer = ({ size, position, children }) => {
+export const Spacer = ({ size, position, direction, children }) => {
   const theme = useTheme();
   const variant = getVariant(position, size, theme);
-  return <SpacerView variant={variant}>{children}</SpacerView>;
-};
+  const flexDirectionStyle =
+    direction === "row" ? { flexDirection: "row" } : {};
 
+  return (
+    <SpacerView variant={variant} style={flexDirectionStyle}>
+      {children}
+    </SpacerView>
+  );
+};
 Spacer.defaultProps = {
   position: "top",
   size: "small",
